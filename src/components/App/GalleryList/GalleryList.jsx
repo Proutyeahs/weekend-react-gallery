@@ -1,10 +1,10 @@
 import GalleryItem from '../GalleryItem/GalleryItem'
 
-function GalleryList() {
+function GalleryList({image}) {
     return (
         <>
             <h2>My Gallery</h2>
-            <GalleryItem />
+            <GalleryItem image={image}/>
         </>
     )
 }
