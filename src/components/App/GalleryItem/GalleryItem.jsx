@@ -10,7 +10,7 @@ function GalleryItem({path, description, likes, liked, picture}) {
             <div className='card'>
                 <div onClick={() => setHidden(!hidden)}>
                     {!hidden && <img src={path} height={100} width={100} />}
-                    {hidden && <span>{description}</span>}
+                    {hidden && <div className='text'>{description}</div>}
                 </div>
                     <p>{likes}</p>
                     <button onClick={() => liked(picture)}>Like!</button>
