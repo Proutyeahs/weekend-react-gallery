@@ -1,10 +1,21 @@
+import { useState } from 'react';
+import './GalleryForm.css'
+import axios from 'axios'
 
+function GalleryForm({newImage}) {
 
-function GalleryForm() {
+    const [img, setImg] = useState('')
+    const [description, setDescription] = useState('')
+
+    const submit = () => {
+        newImage(img, description)
+    }
+
     return (
         <>
-            <input type="text" />
-            <input type="text" />
+            <input className="input" type="text" placeholder="Image link" onChange={(e) => setImg(e.target.value)} value={img}/>
+            <input className="input" type="text" placeholder="Description" onChange={(e) => setDescription(e.target.value)} value={description}/>
+            <p><button onClick={submit}>Submit</button></p>
         </>
     )
 }

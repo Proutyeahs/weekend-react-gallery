@@ -5,6 +5,20 @@ const pool = require('../modules/pool.js')
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
+router.post('/', (req, res) => {
+    console.log(req.body)
+    const queryText = `
+        INSERT INTO image_gallery (path, description, likes) VALUES ($1, $2, $3);`;
+    const newImage = [req.body.img, req.body.description, 0]
+    
+    pool.query(queryText, newImage).then( result => {
+        res.sendStatus(200)
+    }).catch(err => {
+        console.log(err)
+        res.sendStatus(500)
+    })
+})
+
 // PUT Route
 router.put('/like/:id', (req, res) => {
     console.log(req.params);
