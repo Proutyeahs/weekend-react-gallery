@@ -1,9 +1,22 @@
 import './GalleryItem.css'
 import { useState } from "react";
+import axios from 'axios'
 
-function GalleryItem({path, description, likes, liked, picture}) {
+function GalleryItem({getImgs, path, description, likes, liked, picture}) {
 
     let [hidden, setHidden] = useState(false)
+
+    const remove = (id) => {
+        axios({
+            method: 'DELETE',
+            url: `/gallery/${id}`
+        }).then(result => {
+            console.log(result)
+            getImgs()
+        }).catch(err => {
+            console.log(err)
+        })
+    }
 
     return (
         <>
@@ -13,7 +26,7 @@ function GalleryItem({path, description, likes, liked, picture}) {
                     {hidden && <div className='text'>{description}</div>}
                 </div>
                     <p>{likes}</p>
-                    <button onClick={() => liked(picture)}>Like!</button>
+                    <button onClick={() => liked(picture)}>Like!</button><button onClick={() => remove(picture.id)}>Delete</button>
             </div>
 
         </>
