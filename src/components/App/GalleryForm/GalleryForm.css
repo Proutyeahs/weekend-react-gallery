@@ -1,3 +1,7 @@
 .input {
     background-color: wheat;
 }
+
+.hover:hover {
+    background-color: hotpink;
+}

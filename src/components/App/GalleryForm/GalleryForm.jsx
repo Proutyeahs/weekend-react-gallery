@@ -17,7 +17,7 @@ function GalleryForm({newImage}) {
             <h3>Add new Image:</h3>
             <input className="input" type="text" placeholder="Image link" onChange={(e) => setImg(e.target.value)} value={img}/>
             <input className="input" type="text" placeholder="Description" onChange={(e) => setDescription(e.target.value)} value={description}/>
-            <p><button onClick={submit}>Submit</button></p>
+            <p><button className="hover" onClick={submit}>Submit</button></p>
         </>
     )
 }

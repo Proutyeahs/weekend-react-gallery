@@ -26,7 +26,7 @@ function GalleryItem({getImgs, path, description, likes, liked, picture}) {
                     {hidden && <div className='text'>{description}</div>}
                 </div>
                     <p>{likes}</p>
-                    <button onClick={() => liked(picture)}>Like!</button><button onClick={() => remove(picture.id)}>Delete</button>
+                    <button className="hover" onClick={() => liked(picture)}>Like!</button><button className="hover" onClick={() => remove(picture.id)}>Delete</button>
             </div>
 
         </>
