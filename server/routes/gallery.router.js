@@ -30,9 +30,9 @@ router.put('/like/:id', (req, res) => {
 
 // GET Route
 router.get('/', (req, res) => {
-    const sqlText = `SELECT * FROM "image_gallery" ORDER BY name, origin DESC;`;
+    const sqlText = `SELECT * FROM "image_gallery"`;
     pool.query(sqlText).then((results) => {
-        res.send(result.rows);
+        res.send(results.rows);
     }).catch((error) => {
         console.log(error)
         res.sendStatus(500)
