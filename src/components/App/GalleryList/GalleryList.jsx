@@ -22,7 +22,7 @@ function GalleryList({image, getImgs}) {
             <div>
                 {image.map( picture => (
                     <span key={picture.id}>
-                        <GalleryItem picture={picture} path={picture.path} description={picture.description} likes={picture.likes} liked={liked}/>
+                        <GalleryItem getImgs={getImgs} picture={picture} path={picture.path} description={picture.description} likes={picture.likes} liked={liked}/>
 
                     </span>
                 ))}

@@ -5,6 +5,19 @@ const pool = require('../modules/pool.js')
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
+router.delete('/:id', (req, res) => {
+    const id = req.params.id
+    const queryText =`
+    DELETE FROM image_gallery
+    WHERE id = $1;`;
+    pool.query(queryText, [id]).then(result => {
+        res.sendStatus(200)
+    }).catch(err => {
+        console.log(err)
+        res.sendStatus(500)
+    })
+})
+
 router.post('/', (req, res) => {
     console.log(req.body)
     const queryText = `
