@@ -8,6 +8,8 @@ function GalleryForm({newImage}) {
 
     const submit = () => {
         newImage(img, description)
+        setDescription('')
+        setImg('')
     }
 
     return (
