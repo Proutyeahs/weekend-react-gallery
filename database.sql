@@ -1,6 +1,8 @@
+DROP TABLE "image_gallery";
+
 CREATE TABLE "image_gallery" (
 	"id" SERIAL PRIMARY KEY,
-	"path" VARCHAR (500) NOT NULL,
+	"path" VARCHAR (1000) NOT NULL,
 	"description" VARCHAR (500) NOT NULL,
 	"likes" INT NOT NULL
 );
@@ -26,3 +28,7 @@ SELECT * FROM "image_gallery";
 UPDATE "image_gallery"
 SET "likes" = "likes" +1
 WHERE "id" = 10;
+
+INSERT INTO "image_gallery" 
+        (path, description, likes) 
+        VALUES ('some', 'thing', 3);
