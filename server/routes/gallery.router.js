@@ -23,12 +23,11 @@ router.post('/', (req, res) => {
 router.put('/like/:id', (req, res) => {
     console.log(req.params);
     const id = req.params.id;
-    const likes = req.params.likes
     queryText =`
         UPDATE "image_gallery"
-        SET "likes" = $2
+        SET "likes" = "likes" + 1
         WHERE "id" = $1;`;
-    pool.query(queryText, [id, likes]).then(result => {
+    pool.query(queryText, [id]).then(result => {
         res.sendStatus(200)
     }).catch(err => {
         console.log(err)
@@ -44,9 +43,9 @@ router.put('/like/:id', (req, res) => {
 
 // GET Route
 router.get('/', (req, res) => {
-    const sqlText = `SELECT * FROM "image_gallery" ORDER BY name, origin DESC;`;
+    const sqlText = `SELECT * FROM "image_gallery" ORDER BY "description"`;
     pool.query(sqlText).then((results) => {
-        res.send(result.rows);
+        res.send(results.rows);
     }).catch((error) => {
         console.log(error)
         res.sendStatus(500)

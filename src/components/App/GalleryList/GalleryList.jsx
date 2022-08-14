@@ -5,15 +5,9 @@ import axios from 'axios'
 function GalleryList({image, getImgs}) {
 
     const liked = (picture) => {
-        let likes = picture.likes
-        likes++
-        console.log(likes)
         axios({
             method: 'PUT',
-            url: `/gallery/like/${picture.id}`,
-            data: {
-                likes: likes
-            }
+            url: `/gallery/like/${picture.id}`
         }).then((response) => {
             console.log(response)
             getImgs()

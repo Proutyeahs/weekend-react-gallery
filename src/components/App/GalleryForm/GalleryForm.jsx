@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './GalleryForm.css'
-import axios from 'axios'
 
 function GalleryForm({newImage}) {
 

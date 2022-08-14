@@ -37,7 +37,7 @@ function App() {
             console.log(response)
             getImgs()
         }).catch(err => {
-            console.log('wtf', err)
+            console.log(err)
         })
     }
 
