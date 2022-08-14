@@ -1,6 +1,7 @@
 
 import GalleryItem from '../GalleryItem/GalleryItem'
 import axios from 'axios'
+import './GalleryList.css'
 
 function GalleryList({image, getImgs}) {
 

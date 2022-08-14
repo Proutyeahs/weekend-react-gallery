@@ -1,3 +1,8 @@
+* {
+    background-color: gray;
+    font-family: 'Dancing Script', cursive;
+}
+
 .input {
     background-color: wheat;
 }

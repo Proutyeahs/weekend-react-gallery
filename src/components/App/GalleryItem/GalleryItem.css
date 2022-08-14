@@ -7,6 +7,7 @@
 }
 
 .card {
+    background-color: gray;
     vertical-align: top;
     height: 200px;
     width: 200px;
