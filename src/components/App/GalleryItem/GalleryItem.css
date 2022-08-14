@@ -7,7 +7,14 @@
 }
 
 .card {
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     display: inline-block;
+    margin: 10px;
+}
+
+.text {
+    overflow-wrap: break-word;
+    text-align: center;
+    margin: 10px;
 }

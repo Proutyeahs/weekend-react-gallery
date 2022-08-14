@@ -1,8 +1,8 @@
-//import { response } from 'express';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import './App.css';
 import GalleryList from './GalleryList/GalleryList'
+import GalleryForm from './GalleryForm/GalleryForm';
 
 function App() {
 
@@ -24,11 +24,29 @@ function App() {
     })
   }
 
+    const newImage = (img, description) => {
+      console.log(img, description)
+        axios({
+            method: 'POST',
+            url: '/gallery',
+            data: {
+                img: img,
+                description: description
+            }
+        }).then(response => {
+            console.log(response)
+            getImgs()
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
   return (
     <div className="App">
       <header className="App-header">
         <h1 className="App-title">Gallery of My Life</h1>
       </header>
+      <GalleryForm newImage={newImage}/>
       <GalleryList image={image} getImgs={getImgs}/>
     </div>
   );
