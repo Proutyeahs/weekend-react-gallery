@@ -1,21 +1,21 @@
 import './GalleryItem.css'
-import axios from 'axios';
-import {useState} from "react";
-//import { response } from 'express'
+import { useState } from "react";
 
-function GalleryItem({ getImgs, image, id, path, description, likes, like}) {
+function GalleryItem({path, description, likes, liked, picture}) {
 
     let [hidden, setHidden] = useState(false)
 
     return (
         <>
-            <div onClick={() => setHidden(!hidden)}>
-                {!hidden && <img key={id} src={path} height={100} width={100} />}
-                {hidden && <p>{description}</p>}
+            <div className='card'>
+                <div onClick={() => setHidden(!hidden)}>
+                    {!hidden && <img src={path} height={100} width={100} />}
+                    {hidden && <span>{description}</span>}
+                </div>
+                    <p>{likes}</p>
+                    <button onClick={() => liked(picture)}>Like!</button>
             </div>
-                <p>{likes}</p>
-                <p><button onClick={like}>Like!</button></p>
-            
+
         </>
 
     )

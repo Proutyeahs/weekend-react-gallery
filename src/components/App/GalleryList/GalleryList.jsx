@@ -4,14 +4,18 @@ import axios from 'axios'
 
 function GalleryList({image, getImgs}) {
 
-    const like = () => {
+    const liked = (picture) => {
+        let likes = picture.likes
+        likes++
+        console.log(likes)
         axios({
             method: 'PUT',
-            url: `/gallery/like/${image.id}`,
+            url: `/gallery/like/${picture.id}`,
             data: {
-                likes : image.likes +1
+                likes: likes
             }
         }).then((response) => {
+            console.log(response)
             getImgs()
         }).catch(err => {
             console.log(err)
@@ -23,8 +27,8 @@ function GalleryList({image, getImgs}) {
             <h2>My Gallery</h2>
             <div>
                 {image.map( picture => (
-                    <span key={image.id}>
-                        <GalleryItem getImgs={getImgs} image={image} id={picture.id} path={picture.path} description={picture.description} likes={picture.likes} like={like}/>
+                    <span key={picture.id}>
+                        <GalleryItem picture={picture} path={picture.path} description={picture.description} likes={picture.likes} liked={liked}/>
 
                     </span>
                 ))}

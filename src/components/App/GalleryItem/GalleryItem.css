@@ -1,0 +1,13 @@
+* {
+    background-color: gray;
+}
+
+.App-title {
+    background-color: #222;
+}
+
+.card {
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+}
