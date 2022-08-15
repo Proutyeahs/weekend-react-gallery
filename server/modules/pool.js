@@ -24,7 +24,7 @@ if (process.env.DATABASE_URL) {
     };
 } else {
     const pool = new Pool({
-        database: 'deploy',
+        database: 'react_gallery',
         host: 'localhost',
         port: 5432,
         max: 10,
