@@ -23,7 +23,7 @@ if (process.env.DATABASE_URL) {
         idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
     };
 } else {
-    const pool = new Pool({
+    config = new Pool({
         database: 'react_gallery',
         host: 'localhost',
         port: 5432,
