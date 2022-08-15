@@ -24,7 +24,7 @@ if (process.env.DATABASE_URL) {
     };
 } else {
     const pool = new Pool({
-        database: 'react_gallery',
+        database: 'env var: PGDATABASE',
         host: 'localhost',
         port: 5432,
         max: 10,
