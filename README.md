@@ -20,4 +20,5 @@ CSS
 PG
 Bootstrap
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+Link to the hosted app:
+https://ancient-headland-96781.herokuapp.com/
