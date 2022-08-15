@@ -8,7 +8,7 @@ function App() {
 
   useEffect( () => {
     getImgs();
-  }, []);
+  }, []); // run this effect once at load
 
   const [image, setImage] = useState([])
 
@@ -38,6 +38,7 @@ function App() {
             getImgs()
         }).catch(err => {
             console.log(err)
+            alert("Limited to 120 characters")
         })
     }
 

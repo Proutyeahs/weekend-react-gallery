@@ -3,7 +3,7 @@ DROP TABLE "image_gallery";
 CREATE TABLE "image_gallery" (
 	"id" SERIAL PRIMARY KEY,
 	"path" VARCHAR (1000) NOT NULL,
-	"description" VARCHAR (500) NOT NULL,
+	"description" VARCHAR (125) NOT NULL,
 	"likes" INT NOT NULL
 );
 
