@@ -19,6 +19,9 @@
 .text {
     overflow-wrap: break-word;
     text-align: center;
+    display: inline;
+    height: 200px;
+    width: 200px;
     margin: 10px;
 }
 
