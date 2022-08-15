@@ -1,43 +1,52 @@
+/**
+* You'll need to use environment variables in order to deploy your
+* pg-pool configuration to Heroku.
+* It will look something like this:
+**/
+/* the only line you likely need to change is
+ database: 'prime_app',
+ change `prime_app` to the name of your database, and you should be all set!
+*/
+
 const pg = require('pg');
-
-const Pool = pg.Pool;
-
 const url = require('url');
 
 let config = {};
 
+// We need a different pg configuration if we're running
+// on Heroku, vs if we're running locally.
+//
+// Heroku gives us a process.env.DATABASE_URL variable,
+// so if that's set, we know we're on heroku.
 if (process.env.DATABASE_URL) {
-    // Heroku gives a url, not a connection object
-    // https://github.com/brianc/node-pg-pool
-    const params = url.parse(process.env.DATABASE_URL);
-    const auth = params.auth.split(':');
-
-    config = {
-        user: auth[0],
-        password: auth[1],
-        host: params.hostname,
-        port: params.port,
-        database: params.pathname.split('/')[1],
-        ssl: { rejectUnauthorized: false },
-        max: 10, // max number of clients in the pool
-        idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
-    };
+  config = {
+    // We use the DATABASE_URL from Heroku to connect to our DB
+    connectionString: process.env.DATABASE_URL,
+    // Heroku also requires this special `ssl` config
+    ssl: { rejectUnauthorized: false },
+  };
 } else {
-    config = new Pool({
-        database: 'react_gallery',
-        host: 'localhost',
-        port: 5432,
-        max: 10,
-        idleTimeoutMillis: 30000
-    })
+  // If we're not on heroku, configure PG to use our local database
+  config = {
+    host: 'localhost',
+    port: 5432,
+    database: 'react_gallery', // CHANGE THIS LINE to match your local database name!
+  };
 }
 
-    pool.on('connect', () => {
-        console.log('Connected to database')
-    })
+// this creates the pool that will be shared by all other modules
+const pool = new pg.Pool(config);
 
-    pool.on('error', () => {
-        comsole.log('Error cconnecting to database')
-    })
+// the pool will log when it connects to the database
+pool.on('connect', () => {
+  console.log('Postgesql connected');
+});
 
-    module.exports = pool
+// the pool with emit an error on behalf of any idle clients
+// it contains if a backend error or network partition happens
+pool.on('error', (err) => {
+  console.log('Unexpected error on idle client', err);
+  process.exit(-1);
+});
+
+module.exports = pool;
