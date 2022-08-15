@@ -24,7 +24,7 @@ if (process.env.DATABASE_URL) {
     };
 } else {
     const pool = new Pool({
-        database: 'env var: PGDATABASE',
+        database: 'deploy',
         host: 'localhost',
         port: 5432,
         max: 10,
